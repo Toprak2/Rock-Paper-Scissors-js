@@ -9,7 +9,7 @@ function getComputerChoice(){
     }
     return "Scissors";
 }
-
+let score=0;
 
 function playRound(computerChoice,playerChoice){
     //convert playerChoice to lowercase so the user can input either uppercase or lowercase(or both mixed)
@@ -18,6 +18,7 @@ function playRound(computerChoice,playerChoice){
     if(playerChoice=="paper"){
         if(computerChoice == "Rock"){
             return "You win! Paper Beats Rock";
+            score++;
         }
         if(computerChoice=="Scissors"){
             return "You Lose! Scissors Beats Paper";
@@ -31,6 +32,7 @@ function playRound(computerChoice,playerChoice){
         }
         if(computerChoice=="Paper"){
             return "You Win! Scissors Beats Paper";
+            score++;
         }
         return "Tie!";       
     }
@@ -38,6 +40,7 @@ function playRound(computerChoice,playerChoice){
     if(playerChoice=="rock"){
         if(computerChoice == "Scissors"){
             return "You Win! Rock Beats Scissors";
+            score++;
         }
         if(computerChoice=="Paper"){
             return "You Lose! Paper Beats Rock";
