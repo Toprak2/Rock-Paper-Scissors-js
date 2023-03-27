@@ -9,7 +9,7 @@ function getComputerChoice(){
     }
     return "Scissors";
 }
-console.log(getComputerChoice());
+
 
 function playRound(computerChoice,playerChoice){
     //convert playerChoice to lowercase so the user can input either uppercase or lowercase(or both mixed)
