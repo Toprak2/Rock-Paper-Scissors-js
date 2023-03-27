@@ -14,38 +14,38 @@ let score=0;
 function playRound(computerChoice,playerChoice){
     //convert playerChoice to lowercase so the user can input either uppercase or lowercase(or both mixed)
     playerChoice=playerChoice.toLowerCase();
-    //Check possible win conditions for when playerInput is paper
+    //Check possible win conditions for when playerInput is paper, if player won increase the score
     if(playerChoice=="paper"){
         if(computerChoice == "Rock"){
-            return "You win! Paper Beats Rock";
+            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You win! Paper Beats Rock";
             score++;
         }
         if(computerChoice=="Scissors"){
-            return "You Lose! Scissors Beats Paper";
+            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Lose! Scissors Beats Paper";
         }
-        return "Tie!";
+        return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+" Tie!";
     } 
-    //Check possible win conditions for when playerInput is scissors
+    //Check possible win conditions for when playerInput is scissors, if player won increase the score
     if(playerChoice=="scissors"){
         if(computerChoice == "Rock"){
-            return "You Lose! Rock Beats Scissors";
+            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Lose! Rock Beats Scissors";
         }
         if(computerChoice=="Paper"){
-            return "You Win! Scissors Beats Paper";
+            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Win! Scissors Beats Paper";
             score++;
         }
-        return "Tie!";       
+        return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+" Tie!";       
     }
-    //Check possible win conditions for when playerInput is rock
+    //Check possible win conditions for when playerInput is rock, if player won increase the score
     if(playerChoice=="rock"){
         if(computerChoice == "Scissors"){
-            return "You Win! Rock Beats Scissors";
+            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Win! Rock Beats Scissors";
             score++;
         }
         if(computerChoice=="Paper"){
-            return "You Lose! Paper Beats Rock";
+            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"\nYou Lose! Paper Beats Rock";
         }
-        return "Tie!";       
+        return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+" Tie!";       
     }
 }
 
@@ -60,5 +60,7 @@ function game(){
         //play the round give information to the player.
         console.log(playRound(getComputerChoice(),playerChoice));
     }
+    //Show the players and score
+    console.log("Your score is: " + score);
 }
 game();
