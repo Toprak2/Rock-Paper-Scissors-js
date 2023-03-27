@@ -44,6 +44,18 @@ function playRound(computerChoice,playerChoice){
         }
         return "Tie!";       
     }
-    
-
 }
+
+function game(){
+    //define a variable for user input
+    let playerChoice;
+
+    //create a game loop game will take place in this for loop
+    for(let i=0;i<5;i++){
+        //get the user's choice
+        playerChoice=prompt("Please enter Rock ,Paper or Scissors:");
+        //play the round give information to the player.
+        console.log(playRound(getComputerChoice(),playerChoice));
+    }
+}
+game();
