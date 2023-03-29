@@ -35,7 +35,7 @@ function playRound(computerChoice,playerChoice){
             score++;
         }
         return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+" Tie!";       
-    }
+    }   
     //Check possible win conditions for when playerInput is rock, if player won increase the score
     if(playerChoice=="rock"){
         if(computerChoice == "Scissors"){
@@ -53,14 +53,9 @@ function game(){
     //define a variable for user input
     let playerChoice;
 
-    //create a game loop game will take place in this for loop
-    for(let i=0;i<5;i++){
-        //get the user's choice
-        playerChoice=prompt("Please enter Rock ,Paper or Scissors:");
-        //play the round give information to the player.
-        console.log(playRound(getComputerChoice(),playerChoice));
-    }
+
     //Show the players and score
     console.log("Your score is: " + score);
 }
 game();
+
