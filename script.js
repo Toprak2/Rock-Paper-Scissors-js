@@ -10,7 +10,7 @@ function getComputerChoice(){
     return "Scissors";
 }
 let playerScore=0;
-let computerScore=0;
+let computerScore=5;
 
 function playRound(playerChoice){
     //create referencer to gameAnnouncer and scoreboard divs
@@ -62,6 +62,15 @@ function playRound(playerChoice){
         gameAnnouncer.textContent = "Your Choice : Rock\nComputers Choice: "+getComputerChoice()+" Tie!";   
         }  
     }
+    scoreboard.textContent= playerScore +"-"+computerScore;
+    if(playerScore===5){
+        gameAnnouncer.textContent="YOU WIN!";
+    }
+    else if(computerScore===5){
+        gameAnnouncer.innerHTML="YOU LOST &#128128";  
+    }
+
+
 }
 //Declare a reference to the rock button
 const buttonRock=document.querySelector(".rock");
