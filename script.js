@@ -12,6 +12,8 @@ function getComputerChoice(){
 let playerScore=0;
 
 function playRound(computerChoice,playerChoice){
+
+
     //convert playerChoice to lowercase so the user can input either uppercase or lowercase(or both mixed)
     playerChoice=playerChoice.toLowerCase();
     //Check possible win conditions for when playerInput is paper, if player won increase the playerScore
@@ -52,18 +54,22 @@ function playRound(computerChoice,playerChoice){
 const buttonRock=document.querySelector(".rock");
 //add a function to trigger on click to play the round with the buttons class value;
 buttonRock.addEventListener("click",function(e){
-    console.log(playRound(getComputerChoice(),this.classList.value))
-0})
+    Game(this.classList.value); 
+})
 
 const buttonPaper=document.querySelector(".paper");
 
 buttonPaper.addEventListener("click",function(){
-    console.log(playRound(getComputerChoice(),this.classList.value)); 
-0})
+    Game(this.classList.value); 
+})
 
 const buttonScissors=document.querySelector(".scissors");
 
 buttonScissors.addEventListener("click",function(){
-    console.log(playRound(getComputerChoice(),this.classList.value)); 
-0})
+   Game(this.classList.value); 
+})
 
+function Game(playerChoice){
+
+    console.log(playRound(getComputerChoice(),playerChoice));
+}
