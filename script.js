@@ -9,38 +9,38 @@ function getComputerChoice(){
     }
     return "Scissors";
 }
-let score=0;
+let playerScore=0;
 
 function playRound(computerChoice,playerChoice){
     //convert playerChoice to lowercase so the user can input either uppercase or lowercase(or both mixed)
     playerChoice=playerChoice.toLowerCase();
-    //Check possible win conditions for when playerInput is paper, if player won increase the score
+    //Check possible win conditions for when playerInput is paper, if player won increase the playerScore
     if(playerChoice=="paper"){
         if(computerChoice == "Rock"){
             return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You win! Paper Beats Rock";
-            score++;
+            playerScore++;
         }
         if(computerChoice=="Scissors"){
             return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Lose! Scissors Beats Paper";
         }
         return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+" Tie!";
     } 
-    //Check possible win conditions for when playerInput is scissors, if player won increase the score
+    //Check possible win conditions for when playerInput is scissors, if player won increase the playerScore
     if(playerChoice=="scissors"){
         if(computerChoice == "Rock"){
             return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Lose! Rock Beats Scissors";
         }
         if(computerChoice=="Paper"){
             return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Win! Scissors Beats Paper";
-            score++;
+            playerScore++;
         }
         return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+" Tie!";       
     }   
-    //Check possible win conditions for when playerInput is rock, if player won increase the score
+    //Check possible win conditions for when playerInput is rock, if player won increase the playerScore
     if(playerChoice=="rock"){
         if(computerChoice == "Scissors"){
             return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Win! Rock Beats Scissors";
-            score++;
+            playerScore++;
         }
         if(computerChoice=="Paper"){
             return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"\nYou Lose! Paper Beats Rock";
@@ -48,14 +48,22 @@ function playRound(computerChoice,playerChoice){
         return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+" Tie!";       
     }
 }
+//Declare the rock button
+const buttonRock=document.querySelector(".rock");
+//add a function to trigger on click to play the round with the buttons class value;
+buttonRock.addEventListener("click",function(e){
+    console.log(playRound(getComputerChoice(),this.classList.value))
+0})
 
-function game(){
-    //define a variable for user input
-    let playerChoice;
+const buttonPaper=document.querySelector(".paper");
 
+buttonPaper.addEventListener("click",function(){
+    console.log(playRound(getComputerChoice(),this.classList.value)); 
+0})
 
-    //Show the players and score
-    console.log("Your score is: " + score);
-}
-game();
+const buttonScissors=document.querySelector(".scissors");
+
+buttonScissors.addEventListener("click",function(){
+    console.log(playRound(getComputerChoice(),this.classList.value)); 
+0})
 
