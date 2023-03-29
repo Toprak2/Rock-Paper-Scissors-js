@@ -51,13 +51,13 @@ function playRound(playerChoice){
     }   
     //Check possible win conditions for when playerInput is rock, if player won increase the playerScore
     if(playerChoice=="rock"){
-        if(computerChoice == "Scissors"){
+        if(computerChoice === "Scissors"){
             playerScore++;
             gameAnnouncer.textContent =  "Your Choice : Rock\nComputers Choice: "+computerChoice +"You Win! Rock Beats Scissors";
             
             
         }
-        else if(computerChoice =="Paper"){
+        else if(computerChoice ==="Paper"){
             computerScore++;
             gameAnnouncer.textContent = "Your Choice : Rock\nComputers Choice: "+computerChoice +"\nYou Lose! Paper Beats Rock";
         }
@@ -82,19 +82,47 @@ function playRound(playerChoice){
 
 
 }
+
 function removePlayButtons(){
     const body =document.querySelector("body");
     body.removeChild(buttonRock);
     body.removeChild(buttonPaper);
     body.removeChild(buttonScissors);
 }   
+
+
 function addRestartButton(){
+    const restartButton = document.createElement("button");     
     const body =document.querySelector("body");
-    const restartButton = document.createElement("button"); 
+    
     restartButton.innerText="RESTART";
-    body.append(restartButton);
+    restartButton.classList.add("restart");
+
+    restartButton.addEventListener("click",function(){
+        playerScore=0;
+        computerScore=0;
+        document.querySelector(".scoreboard").textContent="0-0";
+        addPlayButtons();
+        document.querySelector(".gameAnnouncer").textContent="Select an option to play";
+        removeRestartButton();
+    });
+
+    body.appendChild(restartButton);
 }
 
+function removeRestartButton(){
+    const body = document.querySelector("body");
+    const restartButton = document.querySelector(".restart");
+    body.removeChild(restartButton);
+}
+
+function addPlayButtons(){
+    const body = document.querySelector("body");
+    const gameAnnouncer =document.querySelector(".gameAnnouncer");
+    body.insertBefore(buttonRock,gameAnnouncer);
+    body.insertBefore(buttonPaper,gameAnnouncer);
+    body.insertBefore(buttonScissors,gameAnnouncer);
+}
 
 //Declare a reference to the rock button
 const buttonRock=document.querySelector(".rock");
