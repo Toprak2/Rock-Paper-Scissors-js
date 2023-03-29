@@ -11,69 +11,66 @@ function getComputerChoice(){
 }
 let playerScore=0;
 
-function playRound(computerChoice,playerChoice){
+function playRound(playerChoice){
 
-
-    //convert playerChoice to lowercase so the user can input either uppercase or lowercase(or both mixed)
-    playerChoice=playerChoice.toLowerCase();
     //Check possible win conditions for when playerInput is paper, if player won increase the playerScore
     if(playerChoice=="paper"){
-        if(computerChoice == "Rock"){
+        if(getComputerChoice() == "Rock"){
             playerScore++;
-            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You win! Paper Beats Rock";
+            console.log( "Your Choice :"+playerChoice+"\nComputers Choice:"+getComputerChoice()+"You win! Paper Beats Rock");
             
         }
-        if(computerChoice=="Scissors"){
-            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Lose! Scissors Beats Paper";
+        else if(getComputerChoice=="Scissors"){
+            console.log("Your Choice :"+playerChoice+"\nComputers Choice:"+getComputerChoice()+"You Lose! Scissors Beats Paper");
         }
-        return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+" Tie!";
+        else{
+        console.log("Your Choice :"+playerChoice+"\nComputers Choice:"+getComputerChoice()+" Tie!");
+        }
     } 
     //Check possible win conditions for when playerInput is scissors, if player won increase the playerScore
     if(playerChoice=="scissors"){
-        if(computerChoice == "Rock"){
-            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Lose! Rock Beats Scissors";
+        if(getComputerChoice() == "Rock"){
+            console.log("Your Choice :"+playerChoice+"\nComputers Choice:"+getComputerChoice()+"You Lose! Rock Beats Scissors");
         }
-        if(computerChoice=="Paper"){
+        else if(getComputerChoice()=="Paper"){
             playerScore++;
-            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Win! Scissors Beats Paper";
+            console.log("Your Choice :"+playerChoice+"\nComputers Choice:"+getComputerChoice()+"You Win! Scissors Beats Paper");
             
+        }else {
+        console.log("Your Choice :"+playerChoice+"\nComputers Choice:"+getComputerChoice()+" Tie!");       
         }
-        return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+" Tie!";       
     }   
     //Check possible win conditions for when playerInput is rock, if player won increase the playerScore
     if(playerChoice=="rock"){
-        if(computerChoice == "Scissors"){
+        if(getComputerChoice() == "Scissors"){
             playerScore++;
-            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Win! Rock Beats Scissors";
+            console.log( "Your Choice :"+playerChoice+"\nComputers Choice:"+getComputerChoice()+"You Win! Rock Beats Scissors");
             
         }
-        if(computerChoice=="Paper"){
-            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"\nYou Lose! Paper Beats Rock";
+        else if(getComputerChoice()=="Paper"){
+            console.log("Your Choice :"+playerChoice+"\nComputers Choice:"+getComputerChoice()+"\nYou Lose! Paper Beats Rock");
         }
-        return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+" Tie!";       
+        else{
+        console.log("Your Choice :"+playerChoice+"\nComputers Choice:"+getComputerChoice()+" Tie!");   
+        }  
     }
 }
 //Declare the rock button
 const buttonRock=document.querySelector(".rock");
 //add a function to trigger on click to play the round with the buttons class value;
-buttonRock.addEventListener("click",function(e){
-    Game(this.classList.value); 
+buttonRock.addEventListener("click",function(){
+    playRound(this.classList.value); 
 })
 
 const buttonPaper=document.querySelector(".paper");
 
 buttonPaper.addEventListener("click",function(){
-    Game(this.classList.value); 
+    playRound(this.classList.value); 
 })
 
 const buttonScissors=document.querySelector(".scissors");
 
 buttonScissors.addEventListener("click",function(){
-   Game(this.classList.value); 
+   playRound(this.classList.value); 
 })
 
-function Game(playerChoice){
-
-    console.log(playRound(getComputerChoice(),playerChoice));
-
-}
