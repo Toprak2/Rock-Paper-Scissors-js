@@ -10,7 +10,7 @@ function getComputerChoice(){
     return "Scissors";
 }
 let playerScore=0;
-
+let computerScore=0;
 
 function playRound(playerChoice){
     //create referencer to gameAnnouncer and scoreboard divs
@@ -25,6 +25,7 @@ function playRound(playerChoice){
             
         }
         else if(getComputerChoice=="Scissors"){
+            computerScore++;
             gameAnnouncer.textContent="Your Choice : Paper\nComputers Choice: "+getComputerChoice()+"You Lose! Scissors Beats Paper";
         }
         else{
@@ -34,6 +35,7 @@ function playRound(playerChoice){
     //Check possible win conditions for when playerInput is scissors, if player won increase the playerScore
     if(playerChoice=="scissors"){
         if(getComputerChoice() == "Rock"){
+            computerScore++;
             gameAnnouncer.textContent = "Your Choice : Scissors \nComputers Choice: "+getComputerChoice()+"You Lose! Rock Beats Scissors";
         }
         else if(getComputerChoice()=="Paper"){
@@ -50,8 +52,10 @@ function playRound(playerChoice){
             playerScore++;
             gameAnnouncer.textContent =  "Your Choice : Rock\nComputers Choice: "+getComputerChoice()+"You Win! Rock Beats Scissors";
             
+            
         }
         else if(getComputerChoice()=="Paper"){
+            computerScore++;
             gameAnnouncer.textContent = "Your Choice : Rock\nComputers Choice: "+getComputerChoice()+"\nYou Lose! Paper Beats Rock";
         }
         else{
