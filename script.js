@@ -10,68 +10,92 @@ function getComputerChoice(){
     return "Scissors";
 }
 let playerScore=0;
-let computerScore=5;
+let computerScore=0;
 
 function playRound(playerChoice){
-    //create referencer to gameAnnouncer and scoreboard divs
+    //create reference to gameAnnouncer and scoreboard divs
     const gameAnnouncer = document.querySelector(".gameAnnouncer");
     const scoreboard = document.querySelector(".scoreboard");
 
+    //get computer's choice
+    const computerChoice =getComputerChoice();
+
     //Check possible win conditions for when playerInput is paper, if player won increase the playerScore
     if(playerChoice=="paper"){
-        if(getComputerChoice() == "Rock"){
+        if(computerChoice === "Rock"){
             playerScore++;
-            gameAnnouncer.textContent= "Your Choice : Paper\nComputers Choice: "+getComputerChoice()+"You win! Paper Beats Rock";
+            gameAnnouncer.textContent= "Your Choice : Paper\nComputers Choice: "+computerChoice +"You win! Paper Beats Rock";
             
         }
-        else if(getComputerChoice=="Scissors"){
+        else if(computerChoice==="Scissors"){
             computerScore++;
-            gameAnnouncer.textContent="Your Choice : Paper\nComputers Choice: "+getComputerChoice()+"You Lose! Scissors Beats Paper";
+            gameAnnouncer.textContent="Your Choice : Paper\nComputers Choice: "+computerChoice +"You Lose! Scissors Beats Paper";
         }
         else{
-        gameAnnouncer.textContent = "Your Choice : Paper\nComputers Choice: "+getComputerChoice()+" Tie!";
+        gameAnnouncer.textContent = "Your Choice : Paper\nComputers Choice: "+computerChoice +" Tie!";
         }
     } 
     //Check possible win conditions for when playerInput is scissors, if player won increase the playerScore
     if(playerChoice=="scissors"){
-        if(getComputerChoice() == "Rock"){
+        if(computerChoice === "Rock"){
             computerScore++;
-            gameAnnouncer.textContent = "Your Choice : Scissors \nComputers Choice: "+getComputerChoice()+"You Lose! Rock Beats Scissors";
+            gameAnnouncer.textContent = "Your Choice : Scissors \nComputers Choice: "+computerChoice +"You Lose! Rock Beats Scissors";
         }
-        else if(getComputerChoice()=="Paper"){
+        else if(computerChoice==="Paper"){
             playerScore++;
-            gameAnnouncer.textContent = "Your Choice : Scissors\nComputers Choice: "+getComputerChoice()+"You Win! Scissors Beats Paper";
+            gameAnnouncer.textContent = "Your Choice : Scissors\nComputers Choice: "+computerChoice +"You Win! Scissors Beats Paper";
             
         }else {
-        gameAnnouncer.textContent = "Your Choice : Scissors\nComputers Choice: "+getComputerChoice()+" Tie!";      
+        gameAnnouncer.textContent = "Your Choice : Scissors\nComputers Choice: "+computerChoice +" Tie!";      
         }
     }   
     //Check possible win conditions for when playerInput is rock, if player won increase the playerScore
     if(playerChoice=="rock"){
-        if(getComputerChoice() == "Scissors"){
+        if(computerChoice == "Scissors"){
             playerScore++;
-            gameAnnouncer.textContent =  "Your Choice : Rock\nComputers Choice: "+getComputerChoice()+"You Win! Rock Beats Scissors";
+            gameAnnouncer.textContent =  "Your Choice : Rock\nComputers Choice: "+computerChoice +"You Win! Rock Beats Scissors";
             
             
         }
-        else if(getComputerChoice()=="Paper"){
+        else if(computerChoice =="Paper"){
             computerScore++;
-            gameAnnouncer.textContent = "Your Choice : Rock\nComputers Choice: "+getComputerChoice()+"\nYou Lose! Paper Beats Rock";
+            gameAnnouncer.textContent = "Your Choice : Rock\nComputers Choice: "+computerChoice +"\nYou Lose! Paper Beats Rock";
         }
         else{
-        gameAnnouncer.textContent = "Your Choice : Rock\nComputers Choice: "+getComputerChoice()+" Tie!";   
+        gameAnnouncer.textContent = "Your Choice : Rock\nComputers Choice: "+computerChoice +" Tie!";   
         }  
     }
+    //update the scoreboard
     scoreboard.textContent= playerScore +"-"+computerScore;
+
+    //Check if any player won
     if(playerScore===5){
         gameAnnouncer.textContent="YOU WIN!";
+        removePlayButtons();
+        addRestartButton();
     }
     else if(computerScore===5){
         gameAnnouncer.innerHTML="YOU LOST &#128128";  
+        removePlayButtons();
+        addRestartButton();
     }
 
 
 }
+function removePlayButtons(){
+    const body =document.querySelector("body");
+    body.removeChild(buttonRock);
+    body.removeChild(buttonPaper);
+    body.removeChild(buttonScissors);
+}   
+function addRestartButton(){
+    const body =document.querySelector("body");
+    const restartButton = document.createElement("button"); 
+    restartButton.innerText="RESTART";
+    body.append(restartButton);
+}
+
+
 //Declare a reference to the rock button
 const buttonRock=document.querySelector(".rock");
 //add a function to trigger on click to play the round with the buttons class value as playerChoice;
