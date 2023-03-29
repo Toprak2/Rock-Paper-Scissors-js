@@ -19,8 +19,9 @@ function playRound(computerChoice,playerChoice){
     //Check possible win conditions for when playerInput is paper, if player won increase the playerScore
     if(playerChoice=="paper"){
         if(computerChoice == "Rock"){
-            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You win! Paper Beats Rock";
             playerScore++;
+            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You win! Paper Beats Rock";
+            
         }
         if(computerChoice=="Scissors"){
             return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Lose! Scissors Beats Paper";
@@ -33,16 +34,18 @@ function playRound(computerChoice,playerChoice){
             return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Lose! Rock Beats Scissors";
         }
         if(computerChoice=="Paper"){
-            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Win! Scissors Beats Paper";
             playerScore++;
+            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Win! Scissors Beats Paper";
+            
         }
         return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+" Tie!";       
     }   
     //Check possible win conditions for when playerInput is rock, if player won increase the playerScore
     if(playerChoice=="rock"){
         if(computerChoice == "Scissors"){
-            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Win! Rock Beats Scissors";
             playerScore++;
+            return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"You Win! Rock Beats Scissors";
+            
         }
         if(computerChoice=="Paper"){
             return "Your Choice :"+playerChoice+"\nComputers Choice:"+computerChoice+"\nYou Lose! Paper Beats Rock";
@@ -72,4 +75,5 @@ buttonScissors.addEventListener("click",function(){
 function Game(playerChoice){
 
     console.log(playRound(getComputerChoice(),playerChoice));
+
 }
