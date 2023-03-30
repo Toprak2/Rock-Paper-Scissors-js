@@ -2,12 +2,12 @@ function getComputerChoice(){
     //create a random number between 0 and 3 to decide the output
     let choice= Math.floor(Math.random()*3)
     if(choice==0){
-        return "Rock";
+        return "rock";
     }
     if(choice==1){
-        return "Paper";
+        return "paper";
     }
-    return "Scissors";
+    return "scissors";
 }
 let playerScore=0;
 let computerScore=0;
@@ -16,58 +16,59 @@ function playRound(playerChoice){
     //create reference to gameAnnouncer and scoreboard divs
     const gameAnnouncer = document.querySelector(".gameAnnouncer");
     const scoreboard = document.querySelector(".scoreboard");
-
     //get computer's choice
     const computerChoice =getComputerChoice();
 
     //Check possible win conditions for when playerInput is paper, if player won increase the playerScore
     if(playerChoice=="paper"){
-        if(computerChoice === "Rock"){
+        if(computerChoice === "rock"){
             playerScore++;
-            gameAnnouncer.textContent= "Your Choice : Paper\nComputers Choice: "+computerChoice +"You win! Paper Beats Rock";
+            gameAnnouncer.textContent= "You Win! Paper beats Rock";
             
         }
-        else if(computerChoice==="Scissors"){
+        else if(computerChoice==="scissors"){
             computerScore++;
-            gameAnnouncer.textContent="Your Choice : Paper\nComputers Choice: "+computerChoice +"You Lose! Scissors Beats Paper";
+            gameAnnouncer.textContent="You Lose! Scissors beat Paper";
         }
         else{
-        gameAnnouncer.textContent = "Your Choice : Paper\nComputers Choice: "+computerChoice +" Tie!";
+        gameAnnouncer.textContent = "Tie!";
         }
     } 
     //Check possible win conditions for when playerInput is scissors, if player won increase the playerScore
     if(playerChoice=="scissors"){
-        if(computerChoice === "Rock"){
+        if(computerChoice === "rock"){
             computerScore++;
-            gameAnnouncer.textContent = "Your Choice : Scissors \nComputers Choice: "+computerChoice +"You Lose! Rock Beats Scissors";
+            gameAnnouncer.textContent = "You Lose! Rock beats Scissors"
         }
-        else if(computerChoice==="Paper"){
+        else if(computerChoice==="paper"){
             playerScore++;
-            gameAnnouncer.textContent = "Your Choice : Scissors\nComputers Choice: "+computerChoice +"You Win! Scissors Beats Paper";
+            gameAnnouncer.textContent = "You Win! Scissors beat Paper"
             
         }else {
-        gameAnnouncer.textContent = "Your Choice : Scissors\nComputers Choice: "+computerChoice +" Tie!";      
+        gameAnnouncer.textContent = "Tie!";      
         }
     }   
     //Check possible win conditions for when playerInput is rock, if player won increase the playerScore
     if(playerChoice=="rock"){
-        if(computerChoice === "Scissors"){
+        if(computerChoice === "scissors"){
             playerScore++;
-            gameAnnouncer.textContent =  "Your Choice : Rock\nComputers Choice: "+computerChoice +"You Win! Rock Beats Scissors";
+            gameAnnouncer.textContent =  "You Win! Rock beats Scissors";
             
             
         }
-        else if(computerChoice ==="Paper"){
+        else if(computerChoice ==="paper"){
             computerScore++;
-            gameAnnouncer.textContent = "Your Choice : Rock\nComputers Choice: "+computerChoice +"\nYou Lose! Paper Beats Rock";
+            gameAnnouncer.textContent = "You Lose! Paper beats Rock";
         }
         else{
-        gameAnnouncer.textContent = "Your Choice : Rock\nComputers Choice: "+computerChoice +" Tie!";   
+        gameAnnouncer.textContent = "Tie!";   
         }  
     }
     //update the scoreboard
     scoreboard.textContent= playerScore +"-"+computerScore;
 
+    //update choice images
+    updateChoiceImage(playerChoice,computerChoice);
     //Check if any player won
     if(playerScore===5){
         gameAnnouncer.textContent="YOU WIN!";
@@ -82,12 +83,36 @@ function playRound(playerChoice){
 
 
 }
+function updateChoiceImage(player,computer){
+    const playerChoiceImage = document.querySelector(".player-choice-img img");
+    const computerChoiceImage = document.querySelector(".computer-choice-img img");
+    
 
+    if(player==="rock"){
+        playerChoiceImage.src="./images/Rock.png";
+    }
+    else if(player==="paper"){
+        playerChoiceImage.src="./images/Paper.png";
+    }
+    else if(player==="scissors"){
+        playerChoiceImage.src="./images/Scissors.png";
+    }
+    if(computer==="rock"){
+        computerChoiceImage.src="./images/Rock.png";
+    }
+    else if(computer==="paper"){
+        computerChoiceImage.src="./images/Paper.png";
+    }
+    else if(computer==="scissors"){
+        computerChoiceImage.src="./images/Scissors.png";
+    }
+
+}
 function removePlayButtons(){
-    const body =document.querySelector("body");
-    body.removeChild(buttonRock);
-    body.removeChild(buttonPaper);
-    body.removeChild(buttonScissors);
+    const list =document.querySelector("ul");
+    buttonRock.remove();
+    buttonPaper.remove();
+    buttonScissors.remove();
 }   
 
 
@@ -117,11 +142,12 @@ function removeRestartButton(){
 }
 
 function addPlayButtons(){
-    const body = document.querySelector("body");
-    const gameAnnouncer =document.querySelector(".gameAnnouncer");
-    body.insertBefore(buttonRock,gameAnnouncer);
-    body.insertBefore(buttonPaper,gameAnnouncer);
-    body.insertBefore(buttonScissors,gameAnnouncer);
+    const listRock = document.querySelector(".listRock");
+    const listPaper = document.querySelector(".listPaper");
+    const listScissors=document.querySelector(".listScissors"); 
+    listRock.appendChild(buttonRock);
+    listPaper.appendChild(buttonPaper);
+    listScissors.appendChild(buttonScissors);
 }
 
 //Declare a reference to the rock button
