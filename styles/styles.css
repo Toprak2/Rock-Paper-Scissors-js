@@ -1,0 +1,51 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    height: 90vh;
+    margin: 0px;
+    background-color: #DAF5FF;
+}
+header{
+    text-align: center;
+    font-family: "sofachromeregular";
+    font-size: 48px;
+    width: 100%;
+    background-color: #FEFF86;
+    margin: 0px;
+    padding: 40px 0;
+}
+ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap:50px;
+    padding: 0px;
+}
+li{
+    max-width: 15%;
+}
+img{
+    max-width: 100%;
+    display: block;
+}
+button{
+padding: 0px;
+max-width: 100%;
+}
+.gameAnnouncer{
+    font-family: "sofachromeregular";
+    font-size: 22px;
+
+}
+.scoreboard{
+    font-family: "sofachromeregular";
+    font-size: 24px;
+
+}
+.restart{
+    padding: 40px;
+    font-family: "sofachromeregular";
+    background-color: aqua;
+}
