@@ -71,11 +71,13 @@ function playRound(playerChoice){
     updateChoiceImage(playerChoice,computerChoice);
     //Check if any player won
     if(playerScore===5){
+        updateChoiceImage("unknown","unknown");
         gameAnnouncer.textContent="YOU WIN!";
         removePlayButtons();
         addRestartButton();
     }
     else if(computerScore===5){
+        updateChoiceImage("unknown","unknown");
         gameAnnouncer.innerHTML="YOU LOST &#128128";  
         removePlayButtons();
         addRestartButton();
@@ -97,6 +99,9 @@ function updateChoiceImage(player,computer){
     else if(player==="scissors"){
         playerChoiceImage.src="./images/Scissors.png";
     }
+    else if(player==="unknown"){
+        playerChoiceImage.src="./images/unknown.png";
+    }
     if(computer==="rock"){
         computerChoiceImage.src="./images/Rock.png";
     }
@@ -105,6 +110,9 @@ function updateChoiceImage(player,computer){
     }
     else if(computer==="scissors"){
         computerChoiceImage.src="./images/Scissors.png";
+    }
+    else if(computer==="unknown"){
+        computerChoiceImage.src="./images/unknown.png";
     }
 
 }
@@ -129,10 +137,12 @@ function addRestartButton(){
         document.querySelector(".scoreboard").textContent="0-0";
         addPlayButtons();
         document.querySelector(".gameAnnouncer").textContent="Select an option to play";
+        body.insertBefore(choiceContainer,document.querySelector(".gameAnnouncer"));
         removeRestartButton();
     });
 
     body.appendChild(restartButton);
+    body.removeChild(choiceContainer);
 }
 
 function removeRestartButton(){
@@ -149,6 +159,8 @@ function addPlayButtons(){
     listPaper.appendChild(buttonPaper);
     listScissors.appendChild(buttonScissors);
 }
+
+const choiceContainer =document.querySelector(".choice-container");
 
 //Declare a reference to the rock button
 const buttonRock=document.querySelector(".rock");
